@@ -49,19 +49,23 @@ class Department {
     int TotalStudents=340;
     int TotalStudents1;
     void DepartmentDetails(){
+        do{
       cout<<"                                                "<<endl;
       cout<<"*****************1>MATHSDEPARTMENT******************"<<endl;
       cout<<"*****************2>ENGLISHDEPARTMENT******************"<<endl;
       cout<<"*****************3>CIVILDEPARTMENT******************"<<endl;
       cout<<"*****************4>PHYSICSDEPARTMENT******************"<<endl;
-      cout<<"*****************5>DO NOT GO TO ANY DEPARTMENT{events}******************"<<endl;
+      cout<<"*****************5>EVENTS***************************"<<endl;
       cout<<"*****************6>ADD THE NAME OF NEW DEPARTMENTS******************"<<endl;
+      cout<<"*****************0>Exit*******************************"<<endl;
 
       cout<<"                 ENTER YOUR CHOICE:"<<DepartmentId<<"        "<<endl;
       cin>>DepartmentId;
       cout<<"                                                         "<<endl;
       system("cls");
       switch(DepartmentId){
+        case '0':
+        break;
         case '1':
         cout<<"*****************WELCOME TO MATHS DEPARTMENT**************"<<endl;
         cout<<"Mr Dharmendra Kori is the HOD of Maths Department"<<endl;
@@ -106,9 +110,11 @@ class Department {
         cin>>TotalStaffs1;
         cout<<"NUMBER OF NEW STUDENTS:"<<endl;
         cin>>TotalStudents1;
-        exit(0);
+        
         break;
            }
+        }
+        while(DepartmentId!='0');
     }
     
 };
@@ -129,29 +135,34 @@ class Student {
     void search();
     void UGS();
     void PGS();
-    int start =0;
+   
     };
     void Student:: StudentDetails(){
     int choice;
     char x;
+    do{
 
     cout << "      -----------------------------" << endl;
     cout << "**********| STUDENTS DETAIL INFO |***********" << endl;
     cout << "      -----------------------------" << endl;
+
+    cout<<"                                                     "<<endl;
     cout << "********** 1. Enter New Commer/Student record******" << endl;
     cout << "********** 2. Display New Students record**********" << endl;
     cout << "********** 3. Search student record****************" << endl;
     cout << "********** 4. Payment details**********************" << endl;
-    cout << "********** 5. Exit*********************************"<< endl;
-
+    cout<<"*************0. Exit*********************************"<<endl;
+ 
     cout << "............................" << endl;
-    cout << "       YOUR Options:[1/2/3/4/5]" << endl;
+    cout << "       YOUR Options:[1/2/3/4/0]" << endl;
     cout << "............................" << endl;
     cout << " Enter Your Choose: ";
     cin >> choice;
     system("cls");
     switch (choice)
     {
+    case 0:
+    break;
     case 1:
         do
         {
@@ -171,13 +182,11 @@ class Student {
         PayFees();
         break;
 
-    case 5:
-        cout << "******Program Is Exit**********"<<endl;
         default:
         cout << "Offooo Invalid Choice... Please Try Again...";
-        exit(0);
         break;
     }
+    }while(choice!=0);
     }
 void Student::insert() 
 {
@@ -202,6 +211,7 @@ void Student::insert()
     cout << "Displaying Record........." << endl;
     if (start != 0)
     {
+        cout<<"                                            "<<endl;
         cout << "*************STUDENT RECORD**************" << endl;
         cout << "Student No.: " << start++ << endl;
         cout << "StudentName: " << StudentName <<endl;
@@ -221,9 +231,9 @@ void Student::search()
     int start = 0;
     cout << "Searching Record........." << endl;
 
+    cout<<"                                               "<<endl;
     cout << "***********SEARCHED STUDENT RECORD**********" << endl;
     cout << "Enter the name of student which you want to search for" << endl;
-
     cin >> StudentName;
 
     if (StudentName == StudentName)
@@ -241,7 +251,7 @@ void Student::search()
 void Student:: PayFees(){
     char mode_of_payment[10];
         
-        cout<<"Enter the mode of payment(cash or by card)"<<endl;
+        cout<<"Enter the mode of payment(cash/online)"<<endl;
         cin>>mode_of_payment;
         cout<<"YOU HAVE TO PAY THE FOLLOWING PAYMENTS FOR THE RESPECTIVE COURSES."<<endl;
         cout<<endl;
@@ -254,8 +264,10 @@ void Student:: PayFees(){
 class UGStudent:public Student{
     public:
     void UGS(){
-        
+    cout<<"------------------------------------------"<<endl;  
     cout<<"***********ARE YOU UGSTUDENT ???**********"<<endl;
+    cout<<"------------------------------------------"<<endl;  
+   
     cout<<"Enter 5 for yes or 6 for no"<<endl;
     cin>>choice;
     switch (choice){
@@ -280,7 +292,7 @@ class UGStudent:public Student{
 };
 class PGStudent: public Student{
     public:
-    void PGS();
+    
 };
 void Student ::PGS(){
     cout<<"*************THANKYOU FOR ADMITTING HERE*************"<<endl;
@@ -331,7 +343,9 @@ class TeachingStaff:public Staff{
 };
 
     void Staff:: Staff1(){
+        cout<<"-----------------------------------------------------"<<endl;
         cout<<"**********TEACHING STAFF OF COLLEGE******************"<<endl;
+        cout<<"-----------------------------------------------------"<<endl;
 
         cout<<"THE PROFESSOR'S WHO TEACH YOU ARE THE TEACHINGSTAFF OF YOUR COLLEGE...."<<endl;
         cout<<"We have a very good faculty for different department\n we can also add new members too"<<endl;
@@ -343,7 +357,9 @@ class NonTeachingStaff:public Staff{
     void Staff2();
 };
  void Staff:: Staff2(){
+        cout<<"-----------------------------------------------------"<<endl;
         cout<<"**********NON-TEACHING STAFF OF COLLEGE******************"<<endl;
+        cout<<"-----------------------------------------------------"<<endl;
 
         cout<<"THE FACULTY MEMBERS WFO ORGANISE THE OTHER SYSTEMS OF COLLEGE RATHER THAN TECHING ARE THE NONTEACHING STAFF MEMBERS OF COLLEGE"<<endl;
         cout<<"Also We have NonTeaching Faculty for different department\nWe can add new members too"<<endl;
@@ -359,10 +375,10 @@ class Classroom:public Student{
     void ClassroomDetails()
            {
             
-int goBack = 0;
-while(1)
+do
 {
 system("cls");
+cout<<"                                                 "<<endl;
 cout<<"-------------------------------------------------"<<endl;	
 cout<<"***********WELCOME TO THE CLASSROOM**************"<<endl;
 cout<<"-------------------------------------------------"<<endl;	
@@ -370,12 +386,14 @@ cout<<"-------------------------------------------------"<<endl;
 cout<<" 1 ClassRoom Details:";
 cout<<"\n 2 DepartmentId Classes belong To";
 cout<<"\n 3 Hall";
-
+cout<<"\n 0 Exit";
 
 
 cout<<"\n Enter your choice: ";
 cin>>choice;
 switch (choice){
+    case 0:
+    break;
     case 1:
     cout<<"There are about 500 ClassRooms in the college"<<endl;
     IsOccupied();
@@ -399,9 +417,8 @@ switch (choice){
     cout<<"Invalid Choice,Enter again"<<endl;
 
 }
-    
-
-}
+    }
+    while(choice!=0);
 }
     void IsOccupied(){
         cout<<"Enter the ClassId:"<<endl;
@@ -425,14 +442,15 @@ class Canteen{
    
     do
     {
+        cout<<"                                              "<<endl;
         cout<<"----------------------------------------------"<<endl;
         cout<<"****************WELCOME TO CANTEEN GUYYS***************"<<endl;
-        cout<<"\t\t\t\t\t\t|                     |"<<endl;
-        cout<<"\t\t\t\t\t\t|       1)Fast Food   |"<<endl;
-        cout<<"\t\t\t\t\t\t|       2)SouthIndian |"<<endl;
-        cout<<"\t\t\t\t\t\t|       3)Chinese     |"<<endl;
-        cout<<"\t\t\t\t\t\t|       4)Indian      |"<<endl;
-        cout<<"\t\t\t\t\t\t|       0)Exit        |"<<endl;
+        cout<<"            |                     |"<<endl;
+        cout<<"            |       1)Fast Food   |"<<endl;
+        cout<<"            |       2)SouthIndian |"<<endl;
+        cout<<"            |       3)Chinese     |"<<endl;
+        cout<<"            |       4)Indian      |"<<endl;
+        cout<<"            |       0)Exit        |"<<endl;
         cout<<"----------------------------------------------"<<endl;
         cout<<"                 select the menu: "<<endl;
         cin>>a;
@@ -461,28 +479,36 @@ class Canteen{
     while(a!='0');
     }
     void Buy(){
-         cout<<"Enter the price of dish you want to Eat: "<<endl;
-         cin>>price;
-         cout<<"Enter the price of another item you want to take: "<<endl;
-         cin>>price1;
-         TotalPrice=price+price1;
-         TotalPrice=TotalPrice+3;
+        cout<<"                                              "<<endl;
+        cout<<"Enter the price of dish you want to Eat: "<<endl;
+        cin>>price;
+        cout<<"Enter the price of another item you want to take: "<<endl;
+        cin>>price1;
+        TotalPrice=price+price1;
+        TotalPrice=TotalPrice+3;
     }
     void Bill(){
+        cout<<"                                              "<<endl;
+
         cout<<"*******Thanks for your order Ma'am /Sir******"<<endl;
         cout<<"Your Total Bill is: "<<TotalPrice<<endl;
         }
     void Discount(){
         if(TotalPrice >=100){
+            cout<<"                                              "<<endl;
+
             cout<<"*******Congratulations*******"<<endl;
             cout<<"We have some offers for you."<<endl;
             cout<<"You got the discout of 5% for your order"<<endl;
             Offer=(5*TotalPrice)/100;
             Offer1=TotalPrice-Offer;
             cout<<Offer1;
+            cout<<"                                              "<<endl;
             cout<<"Thanks for Visiting....."<<endl;
         }
         else{
+            cout<<"                                              "<<endl;
+        
             cout<<"Your Total Bill is: "<<TotalPrice<<endl;
             cout<<"Thanks for Visiting....."<<endl;
 
@@ -510,6 +536,8 @@ class Library{
    
     do
     {
+        cout<<"                                              "<<endl;
+    
         cout<<"-----------------------------------------------------"<<endl;
         cout<<"*********WELCOME TO THE LIBRARY OF YOUR COLLEGE******"<<endl;
         cout<<"-----------------------------------------------------"<<endl;
@@ -530,18 +558,22 @@ class Library{
             break;
         case '1':
              {system("CLS");
+           cout<<"                                              "<<endl;
+         
            cout<<"IT'S MATHEMATICS DEPARTMENT.............."<<endl;
            cout<<"We have different books related to different Branch"<<endl;
            cout<<"Select the Section you want to take.>>>>>"<<endl;
            char e;
            do{
-        cout<<"|       1)ENGINEERING              |"<<endl;
-        cout<<"|       2)PHARMACY                 |"<<endl;
-        cout<<"|       3)MCA                      |"<<endl;
-        cout<<"|       4)Exit                     |"<<endl;
+        cout<<"----------------------------------------------"<<endl;
+
+          cout<<"|       1)ENGINEERING              |"<<endl;
+          cout<<"|       2)PHARMACY                 |"<<endl;
+          cout<<"|       3)MCA                      |"<<endl;
+          cout<<"|       *)Exit                     |"<<endl;
         
         cout<<"----------------------------------------------"<<endl;
-        cout<<"                 select the BookSection: "<<endl;
+        cout<<"         select the BookSection: "<<endl;
         cin>>e;
          switch(e)
         {
@@ -565,7 +597,7 @@ class Library{
             break;
         }
            }
-           while(e!='4');
+           while(e!='*');
         }    
         case '2':
              system("CLS");
@@ -626,13 +658,16 @@ class Library{
         cout<<"Enter the number of days you returned your book= "<<endl;
         cin>>days;
         if(days>31){
-            cout<<"you have to pay 50 rupees as a fine for late returning."<<endl;
+        cout<<"you have to pay 50 rupees as a fine for late returning."<<endl;
+        cout<<"*************HAPPY LEARNING*************"<<endl;
         }
+        else{
         cout<<"                                        "<<endl;
         cout<<"*************HAPPY LEARNING*************"<<endl;
+        }
      }
  
-class Bus:public Student{
+class Bus{
     public:
     int BusId;
     int BusNumber;
@@ -688,6 +723,8 @@ case 3:
      SeatsAvailability();
      ShowSeatAvailability();
     break;
+    case 4:
+    break;
    
 default:
 cout<<"You have entered Something Wrong"<<endl;
@@ -719,12 +756,13 @@ class Hostel{
     int RoomNumber;
 
     virtual void HostelDetails(){
+        cout<<"                                                    "<<endl;
         cout<<"----------------------------------------------------"<<endl;
         cout<<"*****************HOSTEL RELATED INFO.******************"<<endl;
         cout<<"***WE ARE PROVIDING YOU THE HOSTEL FACILITIES TOO*****"<<endl;
         cout<<"----------------------------------------------------"<<endl;
 
-        cout<<"Enter the Student name and Student ID:"<<endl;
+        cout<<"Enter the  Student ID:"<<endl;
         cin>>StudentId;
         cout<<"Enter his/her Block number in the Hostel:"<<endl;
         cin>>BlockNumber;
@@ -740,9 +778,9 @@ class Hostel{
     }
     void ShowHostelDetails(){
         cout<<"******YOU HAVE FOLLOWING DETAILS ABOUT YOUR HOSTEL******"<<endl;
-        cout<<"Your Id is:"<<StudentId<<endl;
+        cout<<"Your Id is          :"<<StudentId<<endl;
         cout<<"your block number is:"<<BlockNumber<<endl;
-        cout<<"your Room number is: "<<RoomNumber<<endl;
+        cout<<"your Room number is : "<<RoomNumber<<endl;
         In();
         Out();
     }
@@ -751,6 +789,8 @@ class Hostel{
 class BoysHostel:Hostel{
     public:
     virtual void HostelDetails1(){
+        system("cls");
+        cout<<"                                      "<<endl;
         cout<<"**************************************"<<endl;
         cout<<"#####WELCOME TO THE GYAN GANGA BOYS HOSTEL####"<<endl;
         cout<<"Enter the Student name and Student ID:"<<endl;
@@ -768,12 +808,13 @@ class BoysHostel:Hostel{
         cout<<"The Timing for the Student to entered in the Hostel is before 10:00 pm "<<endl;
     }
     void ShowHostelDetails1(){
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
         cout<<"******YOU HAVE FOLLOWING DETAILS ABOUT YOUR HOSTEL******"<<endl;
                 cout<<"You are now in the Boys Hostel"<<endl;
 
-        cout<<"Your Id is:"<<StudentId<<endl;
+        cout<<"Your Id is          :"<<StudentId<<endl;
         cout<<"your block number is:"<<BlockNumber<<endl;
-        cout<<"your Room number is: "<<RoomNumber<<endl;
+        cout<<"your Room number is : "<<RoomNumber<<endl;
         In();
         Out();
     }
@@ -781,6 +822,7 @@ class BoysHostel:Hostel{
 class GirlsHostel:Hostel{
     public:
     virtual void HostelDetails2(){
+        system("cls");
         cout<<"**************************************"<<endl;
         cout<<"#####WELCOME TO THE GYAN GANGA GIRLS HOSTEL####"<<endl;
         cout<<"Enter the Student name and Student ID:"<<endl;
@@ -798,11 +840,13 @@ class GirlsHostel:Hostel{
         cout<<"The Timing for the Student to entered in the Hostel is before 8:00 pm "<<endl;
     }
     void ShowHostelDetails2(){
+        cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<"<<endl;
+
         cout<<"******YOU HAVE FOLLOWING DETAILS ABOUT YOUR HOSTEL******"<<endl;
                   cout<<"You are now in the Girls Hostel"<<endl;
-        cout<<"Your Id is:"<<StudentId<<endl;
+        cout<<"Your Id is          :"<<StudentId<<endl;
         cout<<"your block number is:"<<BlockNumber<<endl;
-        cout<<"your Room number is: "<<RoomNumber<<endl;
+        cout<<"your Room number is : "<<RoomNumber<<endl;
         In();
         Out();
     }
@@ -815,7 +859,7 @@ class Parking : public Student{
     char VehicleOwnerName[50];
 
     void ParkVehicle(){
-        
+        cout<<"                                                    "<<endl;
         cout<<"----------------------------------------------------"<<endl;
         cout<<"****************WELCOME TO THE PARKING**************"<<endl;
         cout<<"----------------------------------------------------"<<endl;
@@ -839,12 +883,12 @@ class Parking : public Student{
     }
     void PrintParkingR(){
         cout<<"YOU ARE ELIGIBLE FOR PARKING:::"<<endl;
-        cout<<"you are "<<VehicleOwnerName<<"\n"<<"Your vehicle No is: "<<VehicleNumber<<"\n"<<"Your slot number for Parking is: "<<SlotId<<"\n"<<"Student Name is: "<<StudentName<<endl;
+        cout<<"you are :"<<VehicleOwnerName<<"\n"<<"Your vehicle No is: "<<VehicleNumber<<"\n"<<"Your slot number for Parking is: "<<SlotId<<"\n"<<"Student Name is: "<<StudentName<<endl;
     }
     
 };
 
-class Auditorium: public Classroom{
+class Auditorium{
     public:
     string AuditoriumName;
     string EventsList;
@@ -852,18 +896,22 @@ class Auditorium: public Classroom{
     int TotalSeats;
     int DepartmentId;
     void Events(){
+        system("cls");
         cout<<"----------------------------------------------------"<<endl;
-
+        cout<<"                                                     "<<endl;
         cout<<"WELCOME TO THE COLLEGE'S AUDITORIUM------'SPANDAN'"<<endl;
+        cout<<"                                                    "<<endl;
         cout<<"----------------------------------------------------"<<endl;
-
+        cout<<"                                                    "<<endl;
         cout<<"GYANOTSAV IS GOING TO ORGANISE IN THE NEXT MONTH"<<endl;
         cout<<"Events are  1.RAMP "<<endl;
         cout<<            "2.DJ   "<<endl;
         cout<<            "3.DANCE   "<<endl;
         cout<<            "4.RAP  "<<endl;
         cout<<"DATES TO RESERVE FOR THE CELEBRATION ARE  3 4 5 JAN 2023"<<endl;
+        cout<<"                                      "<<endl;
         cout<<"@@@@@@@@@@@@@@@@HURRYUP@@@@@@@@@@@@@@@"<<endl;
+        cout<<"                                      "<<endl;
         cout<<"THERE ARE LIMITED SEATS AVAILABLE FOR THE LIMITED TIME PERIOD"<<endl;
         
     }
@@ -881,8 +929,9 @@ class Auditorium: public Classroom{
         
         if(DepartmentId==DepartmentId){
             cout<<"YOU ARE MOST WELCOME ...."<<endl;
-    cout<<"-----------------------------------------------------"<<endl;
+    cout<<"----------------------------------------------------"<<endl;
     cout<<"That's All about My College Management Project......"<<endl;
+    cout<<"THANKYOU SO MUCH FOR YOUR PATIENCE.................."<<endl;
             }
            else{
                 cout<<"SORRY,,,YOU ARE LATE"<<endl;
@@ -953,8 +1002,6 @@ int main(){
     A.AddE();
     A.BookEvents();
     
-   
-   
-    return 0;
+   return 0;
 
 }
